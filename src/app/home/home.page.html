@@ -1,14 +1,40 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+    <ion-row class="ion-justify-content-center">
+        <svg
+        id="progress-circle"
+        width="50vh"
+        height="50vh"
+        viewBox="0 0 200 200"
+    >
+        <linearGradient id="linearColors1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ddd6f3"></stop>
+            <stop offset="100%" stop-color="#faaca8"></stop>
+        </linearGradient>
+        <circle
+            cx="50%"
+            cy="50%"
+            [attr.r]="circleR"
+            fill="none"
+            stroke="#f3f3f3"
+            stroke-width="12"
+        />
+        <circle
+            cx="50%"
+            cy="50%"
+            [attr.r]="circleR"
+            fill="none"
+            stroke="url(#linearColors1)"
+            stroke-width="12"
+            stroke-linecap="round"
+            [attr.stroke-dasharray]="circleDasharray"
+            [attr.stroke-dashoffset]="percentageOffset(percent | async)"
+        />
+        <text x="50%" y="55%" class="timer-text">{{ time | async }}</text>
+    </svg>
+
+    </ion-row>
 </ion-content>
+<ion-footer class="footer">
+    <ion-button *ngIf="state === 'stop'" expand="block" color="primary" (click)="startTimer(startDuration)">START</ion-button>
+    <ion-button *ngIf="state === 'start'" expand="block" color="danger" (click)="stopTimer()">STOP</ion-button>
+</ion-footer>

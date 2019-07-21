@@ -12,3 +12,18 @@
     fill: #333;
 }
 
+.footer ion-button {
+    font-size: 30px;
+    font-weight: 600;
+    height: 100px;
+    button {
+        height: 100px;
+    }
+}
+
+.timer-icons {
+    margin-top: -20vh;
+    height: 5vh;
+    width: 100vw;
+    fill: var(--ion-color-secondary);
+}
